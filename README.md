@@ -19,6 +19,5 @@ The portfolio presents:
 ## Structure
 
 - `index.html` - single-page responsive portfolio site
-- `maxresdefault.jpg` - legacy image retained in the repository, not used by the current page
 
-The old placeholder hobbies and contact pages were removed because the portfolio is now a single-page technical site.
+The old placeholder hobbies, contact page, and legacy image were removed because the portfolio is now a single-page technical site.
