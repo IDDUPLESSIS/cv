@@ -1,82 +1,418 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>David du Plessis</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="David du Plessis - Senior Business Intelligence Developer focused on BI, AI automation, SQL/Python ETL, and enterprise data systems.">
+  <title>David du Plessis | BI, AI Automation & Enterprise Data Systems</title>
+  <style>
+    :root {
+      --bg: #0b1120;
+      --panel: #111827;
+      --panel-2: #0f172a;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --soft: #cbd5e1;
+      --line: rgba(148, 163, 184, 0.22);
+      --accent: #22d3ee;
+      --accent-2: #a7f3d0;
+      --shadow: 0 20px 60px rgba(8, 47, 73, 0.35);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 18% 0%, rgba(34, 211, 238, 0.16), transparent 30rem),
+        radial-gradient(circle at 90% 12%, rgba(167, 243, 208, 0.10), transparent 26rem),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .wrap { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid var(--line);
+      background: rgba(11, 17, 32, 0.88);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav {
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand { font-weight: 800; letter-spacing: 0.01em; color: #fff; }
+
+    .nav-links { display: flex; align-items: center; gap: 18px; color: var(--muted); font-size: 0.94rem; }
+    .nav-links a:hover { color: #fff; }
+
+    .hero { padding: 84px 0 64px; border-bottom: 1px solid var(--line); }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+      gap: 42px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 11px;
+      border: 1px solid rgba(34, 211, 238, 0.28);
+      border-radius: 999px;
+      background: rgba(34, 211, 238, 0.08);
+      color: #cffafe;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3 { margin: 0; line-height: 1.12; color: #fff; }
+    h1 { margin-top: 22px; font-size: clamp(2.7rem, 7vw, 5.4rem); letter-spacing: -0.04em; }
+    h2 { font-size: clamp(2rem, 4vw, 3.1rem); letter-spacing: -0.03em; }
+    h3 { font-size: 1.22rem; }
+
+    .title { margin-top: 20px; max-width: 790px; color: var(--soft); font-size: clamp(1.12rem, 2.3vw, 1.45rem); font-weight: 700; }
+    .statement { margin: 24px 0 0; max-width: 720px; color: var(--muted); font-size: 1.08rem; }
+
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+    .button {
+      display: inline-flex;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px 15px;
+      color: #fff;
+      font-weight: 800;
+      font-size: 0.94rem;
+      transition: border-color 160ms ease, background 160ms ease, transform 160ms ease;
+    }
+    .button:hover { border-color: rgba(34, 211, 238, 0.7); transform: translateY(-1px); }
+    .button.primary { border-color: transparent; background: var(--accent); color: #08111f; }
+    .button.primary:hover { background: #67e8f9; }
+
+    .terminal {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: rgba(15, 23, 42, 0.82);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .terminal-top { display: flex; align-items: center; gap: 7px; padding: 14px 16px; border-bottom: 1px solid var(--line); }
+    .dot { width: 11px; height: 11px; border-radius: 50%; }
+    .red { background: #fb7185; } .yellow { background: #facc15; } .green { background: #34d399; }
+    .terminal-title { margin-left: 8px; color: var(--muted); font: 0.8rem ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+    .terminal-body { padding: 20px; color: var(--soft); font: 0.92rem/1.8 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+    .key { color: var(--accent); }
+
+    section { padding: 76px 0; }
+    .section-head { max-width: 780px; margin-bottom: 30px; }
+    .section-kicker { color: var(--accent); font-size: 0.76rem; font-weight: 900; letter-spacing: 0.18em; text-transform: uppercase; }
+    .section-head p { margin: 16px 0 0; color: var(--muted); font-size: 1.03rem; }
+
+    .cards { display: grid; gap: 18px; }
+    .three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: rgba(17, 24, 39, 0.72);
+      padding: 22px;
+      box-shadow: 0 8px 30px rgba(2, 6, 23, 0.16);
+    }
+
+    .muted { color: var(--muted); }
+    .project { display: flex; flex-direction: column; min-height: 100%; }
+    .project-top { display: flex; justify-content: space-between; gap: 18px; align-items: flex-start; }
+    .project-subtitle { margin: 7px 0 0; color: #a5f3fc; font-weight: 700; }
+    .project-body { display: grid; gap: 14px; margin-top: 22px; color: var(--soft); font-size: 0.95rem; }
+    .project-body strong { color: #fff; }
+
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid rgba(34, 211, 238, 0.22);
+      border-radius: 999px;
+      background: rgba(34, 211, 238, 0.08);
+      padding: 5px 10px;
+      color: #cffafe;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .timeline { display: grid; gap: 18px; }
+    .role-head { display: flex; justify-content: space-between; gap: 18px; align-items: flex-start; }
+    .role-company { margin-top: 5px; color: #a5f3fc; font-weight: 800; }
+    .role-dates { color: var(--muted); white-space: nowrap; font-weight: 700; }
+    ul { margin: 18px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+    li { color: var(--soft); padding-left: 22px; position: relative; }
+    li::before { content: ""; position: absolute; left: 0; top: 0.72em; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+
+    .stack-card h3 { display: flex; align-items: center; gap: 10px; }
+    .icon { width: 28px; height: 28px; display: inline-grid; place-items: center; border-radius: 8px; background: rgba(34, 211, 238, 0.12); color: var(--accent); }
+
+    .credentials { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 20px; align-items: start; }
+    .credential-list { display: grid; gap: 10px; }
+    .credential { border: 1px solid var(--line); border-radius: 8px; background: rgba(15, 23, 42, 0.72); padding: 13px 15px; color: var(--soft); }
+
+    footer { border-top: 1px solid var(--line); padding: 30px 0; color: var(--muted); }
+    .footer-row { display: flex; justify-content: space-between; gap: 18px; align-items: center; }
+    .footer-links { display: flex; gap: 16px; }
+    .footer-links a:hover { color: #fff; }
+
+    @media (max-width: 860px) {
+      .nav { height: auto; padding: 16px 0; align-items: flex-start; }
+      .nav-links { flex-wrap: wrap; justify-content: flex-end; gap: 10px 14px; }
+      .hero-grid, .two, .three, .credentials { grid-template-columns: 1fr; }
+      .hero { padding-top: 58px; }
+      .role-head, .footer-row { flex-direction: column; }
+      .role-dates { white-space: normal; }
+    }
+
+    @media (max-width: 560px) {
+      .wrap { width: min(100% - 24px, 1120px); }
+      .nav-links { display: none; }
+      section { padding: 58px 0; }
+      .card { padding: 18px; }
+      .actions .button { width: 100%; }
+    }
+  </style>
 </head>
-
 <body>
-  <table cellspacing="20">
-    <tr>
-      <td><img src="maxresdefault.jpg" alt="Super Cute Dog"></td>
-      <td>
-        <h1>David du Plessis</h1>
-        <p><em>A good way to learn <strong><a href="https://www.google.com/">web design</a></strong>.</em></p>
-        <p>Add paragraph here</p>
-      </td>
-    </tr>
-  </table>
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="#top">David du Plessis</a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#stack">Stack</a>
+        <a href="#certifications">Credentials</a>
+      </nav>
+    </div>
+  </header>
 
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">Business Intelligence &amp; AI Specialist</div>
+          <h1>David du Plessis</h1>
+          <p class="title">Senior Business Intelligence Developer | BI, AI Automation &amp; Enterprise Data Systems</p>
+          <p class="statement">I build SQL-heavy BI, AI automation, and operational intelligence systems that turn fragmented enterprise data into decision-ready outputs.</p>
+          <div class="actions">
+            <a class="button primary" href="https://www.linkedin.com/in/IDDUPLESSIS/">LinkedIn</a>
+            <a class="button" href="https://github.com/IDDUPLESSIS">GitHub</a>
+            <a class="button" href="mailto:dave790822@gmail.com">Email</a>
+          </div>
+        </div>
+        <aside class="terminal" aria-label="Portfolio positioning summary">
+          <div class="terminal-top">
+            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+            <span class="terminal-title">portfolio.positioning</span>
+          </div>
+          <div class="terminal-body">
+            <div><span class="key">role</span>: technical architect / BI automation leader</div>
+            <div><span class="key">delivery_mix</span>: ~60% engineering / ~40% architecture + leadership</div>
+            <div><span class="key">core</span>: enterprise BI, AI automation, SQL/Python ETL</div>
+            <div><span class="key">systems</span>: SAP, ServiceNow, Salesforce, Cisco, Direct</div>
+            <div><span class="key">outputs</span>: deployable ETL, BI, AI workflows, operating dashboards</div>
+          </div>
+        </aside>
+      </div>
+    </section>
 
-  <hr>
-  <h3>Education</h3>
-  <ul>
-    <li>test</li>
-    <li>test</li>
-    <li>test</li>
-  </ul>
-<hr>
-  <h3>Work Experience</h3>
-  <table>
-    <th>Dates</th>
-    <th>Work</th>
-    <tr>
-      <td>2010-2013</td>
-      <td>Chief bottle counter</td>
-    </tr>
-    <tr>
-      <td>2010</td>
-      <td>More bottle counting</td>
-    </tr>
-  </table>
-<hr>
-  <h3>Skills</h3>
-<table cellspacing="10">
-  <tr>
-    <td>
-      <table>
-        <tr>
-    <td>vba</td>
-    <td>⭐⭐⭐⭐⭐</td>
-        </tr>
-        <tr>
-    <td>vb.net</td>
-    <td>⭐⭐⭐⭐⭐</td>
-        </tr>
-      </table>
-    </td>
-    <td>
-      <table>
-        <tr>
-    <td>vba</td>
-    <td>⭐⭐⭐⭐⭐</td>
-        </tr>
-        <tr>
-    <td>vb.net</td>
-    <td>⭐⭐⭐⭐⭐</td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
+    <section id="about">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="section-kicker">About</div>
+          <h2>BI architecture with working-code accountability</h2>
+          <p>Business Intelligence &amp; AI Specialist focused on process optimization, automation, LLMs, SQL/Python ETL, Power Automate workflows, and enterprise data products.</p>
+        </div>
+        <div class="cards three">
+          <div class="card">Builds prompt chains with ChatGPT/Gemini APIs and automation workflows that move beyond static reporting.</div>
+          <div class="card">Maps names, customers, contracts, and assets across ServiceNow, SAP, Direct, Cisco, Salesforce, and related operating systems.</div>
+          <div class="card">Leads charters, backlog/WBS planning, stakeholder communications, change control, UAT, release management, and mentoring.</div>
+        </div>
+      </div>
+    </section>
 
+    <section id="projects">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="section-kicker">Featured Projects</div>
+          <h2>Deployable systems, not slideware</h2>
+          <p>Project work is organized around the engineering problem, shipped solution, business impact, and implementation stack.</p>
+        </div>
+        <div class="cards two">
+          <article class="card project">
+            <div class="project-top">
+              <div>
+                <h3>pyMLChurn</h3>
+                <p class="project-subtitle">AI Churn Prediction for SQL Data Estates</p>
+              </div>
+              <a class="button" href="https://github.com/IDDUPLESSIS/pyMLChurn">GitHub</a>
+            </div>
+            <div class="project-body">
+              <div><strong>Problem:</strong> SQL-heavy customer estates need a repeatable way to identify churn risk from fragmented account, activity, and transaction data.</div>
+              <div><strong>Solution:</strong> End-to-end AI churn prediction pipeline for MS SQL Server that engineers cadence-aware features, trains a supervised ML classifier using scikit-learn, and exports ranked explainable risk lists with SHAP/XAI or coefficient fallback.</div>
+              <div><strong>Impact:</strong> Produces Sales and Customer Success action-ready outputs through a CLI / one-click executable with Windows and SQL authentication support.</div>
+            </div>
+            <div class="chips">
+              <span class="chip">Python</span><span class="chip">scikit-learn</span><span class="chip">Pandas</span><span class="chip">NumPy</span><span class="chip">SHAP</span><span class="chip">argparse</span><span class="chip">dotenv</span><span class="chip">logging</span><span class="chip">SQL Server</span><span class="chip">T-SQL</span><span class="chip">pyodbc</span>
+            </div>
+          </article>
 
-  <hr>
-  <a href="hobbies.html">My Hobbies</a>
-  <a href="contactme.html">Contact me</a>
-  <br><br>
+          <article class="card project">
+            <div class="project-top">
+              <div>
+                <h3>Executive Briefing Manager / Sales Plays</h3>
+                <p class="project-subtitle">LLM-assisted sales intelligence workflow</p>
+              </div>
+              <a class="button" href="https://github.com/IDDUPLESSIS/paCoverageLifecycleAiPipeline">GitHub</a>
+            </div>
+            <div class="project-body">
+              <div><strong>Problem:</strong> Account teams need executive-ready briefings that combine public client intelligence with internal asset and transaction context.</div>
+              <div><strong>Solution:</strong> One-click Power Automate + LLM workflow that merges public client intelligence with internal asset and transaction data to generate executive briefings and recommended sales plays.</div>
+              <div><strong>Impact:</strong> +18% sales vs +4% control; 4% churn vs ~8% benchmark.</div>
+            </div>
+            <div class="chips">
+              <span class="chip">Power Automate</span><span class="chip">Python</span><span class="chip">T-SQL</span><span class="chip">OpenAI</span><span class="chip">Gemini</span><span class="chip">Microsoft 365 connectors</span><span class="chip">Power BI</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
+    <section id="experience">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="section-kicker">Experience</div>
+          <h2>Enterprise BI, automation, and delivery leadership</h2>
+        </div>
+        <div class="timeline">
+          <article class="card">
+            <div class="role-head"><div><h3>Senior Business Intelligence Developer</h3><div class="role-company">NTT</div></div><div class="role-dates">Dec 2024-Present</div></div>
+            <ul>
+              <li>Build enterprise BI, AI automation, and operational intelligence systems across quote-to-cash and customer lifecycle data.</li>
+              <li>Lead SQL/Python ETL, Power BI/Tableau reporting, and cross-system integration across SAP, ServiceNow, Salesforce, Cisco, and internal Direct data.</li>
+              <li>Operate in a hybrid delivery role: about 60% hands-on engineering and 40% architecture, backlog, stakeholder, and change-control leadership.</li>
+              <li>Mentor analysts and developers on deployable BI systems, data quality controls, and automation-first delivery patterns.</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <div class="role-head"><div><h3>Business Intelligence Specialist</h3><div class="role-company">NTT</div></div><div class="role-dates">Dec 2021-Dec 2024</div></div>
+            <ul>
+              <li>Delivered SQL-heavy analytics and operational reporting for enterprise sales, contract, asset, and service data.</li>
+              <li>Built automation workflows with Python, Power Automate, and Microsoft 365 connectors to reduce manual reporting and handoff work.</li>
+              <li>Developed name-mapping and normalization logic across ServiceNow, SAP, Direct, Cisco, and Salesforce data sources.</li>
+              <li>Converted stakeholder requirements into charters, backlogs, WBS plans, UAT paths, and release-ready analytics outputs.</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <div class="role-head"><div><h3>Sr. Business Analyst</h3><div class="role-company">NTT</div></div><div class="role-dates">Feb 2019-Dec 2021</div></div>
+            <ul>
+              <li>Analyzed quote-to-cash, contract, and service operations to identify process gaps and reporting automation opportunities.</li>
+              <li>Partnered with business and technical teams to translate operational requirements into data models, dashboards, and control reports.</li>
+              <li>Supported change control, stakeholder communications, UAT, and production release activities for BI and process improvement work.</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <div class="role-head"><div><h3>Contract Specialist</h3><div class="role-company">Dimension Data</div></div><div class="role-dates">Aug 2017-Feb 2019</div></div>
+            <ul>
+              <li>Supported contract operations, commercial data review, and process controls for enterprise customer and vendor workflows.</li>
+              <li>Improved reporting and tracking around contract lifecycle activity, renewals, and operational handoffs.</li>
+              <li>Built working knowledge of SAP FI/MM/SD, Oracle ERP, and downstream operational data dependencies.</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <div class="role-head"><div><h3>Managing Director / Product Development / Operations</h3><div class="role-company">52 Kingfisher</div></div><div class="role-dates">1998-Jul 2017</div></div>
+            <ul>
+              <li>Led product development, operations, stakeholder management, and commercial execution across a long-running business.</li>
+              <li>Owned process design, financial controls, team coordination, customer communications, and operational delivery.</li>
+              <li>Built the business leadership foundation later applied to BI architecture, automation delivery, and stakeholder-led technical programs.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="stack">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="section-kicker">Technical Stack</div>
+          <h2>The systems I use to turn data into operating leverage</h2>
+        </div>
+        <div class="cards three">
+          <div class="card stack-card"><h3><span class="icon">DB</span>Data &amp; BI</h3><div class="chips"><span class="chip">SQL Server</span><span class="chip">T-SQL</span><span class="chip">MySQL</span><span class="chip">Power BI</span><span class="chip">DAX</span><span class="chip">Power Query</span><span class="chip">Tableau</span><span class="chip">Advanced Excel</span></div></div>
+          <div class="card stack-card"><h3><span class="icon">AI</span>AI &amp; ML</h3><div class="chips"><span class="chip">LLMs</span><span class="chip">OpenAI</span><span class="chip">Gemini</span><span class="chip">prompt engineering</span><span class="chip">RAG</span><span class="chip">scikit-learn</span><span class="chip">SHAP</span><span class="chip">churn prediction</span></div></div>
+          <div class="card stack-card"><h3><span class="icon">WF</span>Automation</h3><div class="chips"><span class="chip">Power Automate</span><span class="chip">Python</span><span class="chip">VB.NET</span><span class="chip">C#</span><span class="chip">Microsoft 365 connectors</span><span class="chip">aXet.Flow / Node-RED</span></div></div>
+          <div class="card stack-card"><h3><span class="icon">ES</span>Enterprise Systems</h3><div class="chips"><span class="chip">SAP FI/MM/SD</span><span class="chip">ServiceNow</span><span class="chip">Salesforce</span><span class="chip">Cisco</span><span class="chip">Oracle ERP</span></div></div>
+          <div class="card stack-card"><h3><span class="icon">DL</span>Delivery</h3><div class="chips"><span class="chip">Agile/Scrum</span><span class="chip">backlog/WBS</span><span class="chip">UAT</span><span class="chip">release management</span><span class="chip">change control</span><span class="chip">stakeholder management</span><span class="chip">mentoring</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="certifications">
+      <div class="wrap credentials">
+        <div>
+          <div class="section-head">
+            <div class="section-kicker">Certifications</div>
+            <h2>Credentials aligned to AI, BI, delivery, and enterprise process</h2>
+          </div>
+          <div class="credential-list">
+            <div class="credential">Google Project Management Professional Certificate</div>
+            <div class="credential">Google AI Essentials</div>
+            <div class="credential">Microsoft Azure AI / Generative AI / AI Agents / NLP / Information Extraction / Computer Vision / Data Analytics certifications</div>
+            <div class="credential">Harvard Contract Law</div>
+            <div class="credential">SAP FI / SD / MM</div>
+          </div>
+        </div>
+        <aside class="card">
+          <div class="section-kicker">Education</div>
+          <h2>Southern New Hampshire University</h2>
+          <p class="muted">Bachelor of Science, Finance, 2022</p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <div>David du Plessis - Senior Business Intelligence Developer</div>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/IDDUPLESSIS/">LinkedIn</a>
+        <a href="https://github.com/IDDUPLESSIS">GitHub</a>
+        <a href="mailto:dave790822@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
 </body>
-
 </html>
